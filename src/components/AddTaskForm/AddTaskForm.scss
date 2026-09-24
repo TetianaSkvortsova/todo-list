@@ -1,0 +1,68 @@
+@mixin border {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.8rem;
+}
+
+.add-task-form {
+  &__title {
+    color: #64748b;
+    text-transform: uppercase;
+    opacity: 1;
+    font-weight: 600;
+  }
+
+  &__form-wrapper {
+    display: flex;
+    padding-top: 20px;
+  }
+
+  &__input-fields {
+    @include border;
+    padding: 10px;
+    width: 50%;
+    background-color: #F8FAFC;
+    margin-right: 20px;
+  }
+
+  &__input {
+    border: none;
+    width: 100%;
+    background-color: #F8FAFC;
+    line-height: 40px;
+    padding: 0 10px;
+    color: #64748b;
+    font: 1.3rem "Inter", sans-serif;
+  }
+
+  &__input:focus {
+    outline: none;
+  }
+
+  &__input::placeholder {
+    color: #bebebe;
+  }
+
+  &__task-type {
+    @include border;
+    margin-right: 20px;
+    padding: 0 1rem;
+    text-transform: capitalize;
+    background-color: #F8FAFC;
+    font: 1.3rem "Inter", sans-serif;
+    cursor: pointer;
+  }
+
+  &__task-type:focus {
+    border: solid 1px #6366f1;
+  }
+
+  &__add-btn {
+    background-color: #4f46e5;
+    border: none;
+    color: #ffffff;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    font-weight: 800;
+    font: 1.3rem "Inter", sans-serif;
+  }
+}

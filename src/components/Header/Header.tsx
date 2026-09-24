@@ -1,13 +1,13 @@
 import React from 'react';
-import './Header.css';
+import './Header.scss';
 
 function Header() {
     return (
-        <div className="container">
-            <div className='content-wrapper'>
-                <div className='content'>
-                    <div className='logo-wrapper'>
-                        <span className='logo badge'>
+        <header className='app-header'>
+            <div className='app-header__wrapper'>
+                <div className='app-header__main'>
+                    <div className='app-header__brand'>
+                        <span className='app-header__badge-logo'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                  stroke-linejoin="round" aria-hidden="true"><rect
@@ -15,20 +15,20 @@ function Header() {
                                 d="M13 6h8"></path><path d="M13 12h8"></path><path d="M13 18h8"></path>
                                 </svg>
                         </span>
-                        <span className='name text-muted'>Мій планувальник</span>
+                        <span className='app-header__name'>Мій планувальник</span>
                     </div>
-                    <h1 className='title'>Список завдань</h1>
-                    <p className='subtitle'>Організовуй свої ідеї та щоденні таски</p>
+                    <h1 className='app-header__title'>Список завдань</h1>
+                    <p className='app-header__subtitle'>Організовуй свої ідеї та щоденні таски</p>
                 </div>
-                <div className='progress badge'>
+                <div className='app-header__progress'>
                     <h1>33%</h1>
-                    <p className='text-muted'>прогрес</p>
+                    <p className='app-header__text'>прогрес</p>
                 </div>
             </div>
-            <div className='progress-bar'>
-                <div className='progress-bar__fill' style={{ width: `${33}%` }}></div>
+            <div className='app-header__progress-bar'>
+                <div className='app-header__progress-bar-fill' style={{ width: `${33}%` }}></div>
             </div>
-        </div>
+        </header>
     );
 }
 

@@ -1,0 +1,83 @@
+$white-font-color: #7c3aed;
+
+@mixin badge {
+  background-color: #ffffff1a;
+  border-radius: 1rem;
+  padding: 0.8rem;
+}
+
+@mixin text-muted {
+  text-transform: uppercase;
+  color: #c7d2fe;
+  opacity: 1;
+  font-weight: 600;
+}
+
+.app-header {
+  padding: 2rem;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  border-radius: 3rem 3rem 0 0;
+  overflow: hidden;
+  margin: 0;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__brand {
+    color: #e0e7ff;
+    display: inline-flex;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+
+  &__badge-logo {
+    @include badge;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      display: block;
+    }
+  }
+
+  &__name {
+    @include text-muted;
+    margin-left: 5px;
+  }
+
+  &__subtitle {
+    color: #c7d2fe;
+    font-size: 1.3rem;
+  }
+
+  &__progress {
+    @include badge;
+    color: $white-font-color;
+    height: fit-content;
+    border: solid 1px #ffffff1a;
+  }
+
+  &__text {
+    @include text-muted;
+  }
+
+  &__progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #00000033;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-top: 15px;
+  }
+
+  &__progress-bar-fill {
+    height: 100%;
+    background-color: #31f271;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+  }
+}
+
