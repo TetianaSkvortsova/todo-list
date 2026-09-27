@@ -1,0 +1,54 @@
+.task-list {
+  margin-top: 2rem;
+  align-items: center;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-content: center;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.3rem;
+    padding: 1rem;
+  }
+
+  &__checkbox, &__edit, &__delete, &__checkbox-button {
+    border: none;
+    background-color: #ffffff;
+  }
+
+  &__checkbox {
+    align-self: center;
+  }
+
+  &__title {
+    font: 1.3rem "Inter", sans-serif;
+  }
+
+  &__description {
+    margin-top: 0.7rem;
+    font: 1rem "Inter", sans-serif;
+  }
+
+  &__category {
+    padding: 0.5rem;
+    background-color: #f1f5f9;
+    border-radius: 0.8rem;
+    margin-right: 1rem;
+    color: #475569;
+  }
+
+  &__date {
+    color: #94a3b8;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__details {
+    flex-grow: 1;
+  }
+}

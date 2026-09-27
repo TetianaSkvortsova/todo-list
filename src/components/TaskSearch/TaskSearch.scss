@@ -1,0 +1,31 @@
+.task-search {
+  padding: 0.2rem;
+  width: 30%;
+  background-color: #F8FAFC;
+  border: 1px solid #e5e7eb;
+  border-radius: 2rem;
+  display: flex;
+
+  &__input {
+    border: none;
+    width: 100%;
+    background-color: #F8FAFC;
+    line-height: 40px;
+    color: #64748b;
+    font: 1.2rem "Inter", sans-serif;
+    margin: 10px;
+  }
+
+  &__input:focus {
+    outline: none;
+  }
+
+  &__input::placeholder {
+    color: #bebebe;
+  }
+
+  svg {
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
+}
