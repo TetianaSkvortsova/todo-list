@@ -10,6 +10,7 @@
     border: 1px solid #e2e8f0;
     border-radius: 1.3rem;
     padding: 1rem;
+    margin-bottom: 1rem;
   }
 
   &__checkbox, &__edit, &__delete, &__checkbox-button {
@@ -36,6 +37,7 @@
     border-radius: 0.8rem;
     margin-right: 1rem;
     color: #475569;
+    text-transform: capitalize;
   }
 
   &__date {
