@@ -17,8 +17,12 @@ interface TodoState {
     items: Todo[];
 }
 
+const savedTodos = localStorage.getItem('todos');
+
+const initialItems: Todo[] = savedTodos ? JSON.parse(savedTodos) : [];
+
 const initialState: TodoState = {
-    items: [],
+    items: initialItems,
 };
 
 const todoSlice = createSlice({
