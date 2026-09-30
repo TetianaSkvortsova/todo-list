@@ -1,30 +1,40 @@
 import React from 'react';
 import './TaskList.scss';
-import {useAppSelector} from "../../store/hooks.ts";
+import {useAppDispatch, useAppSelector} from "../../store/hooks.ts";
 import {selectValues} from "../AddTaskForm/AddTaskForm.tsx";
+import {toggleTodo} from "../../store/todoSlice.ts";
 
 function TaskList() {
+    const dispatch = useAppDispatch();
     const todos = useAppSelector((state) => state.todos.items);
 
-    if(todos.length === 0) {
+    if (todos.length === 0) {
         return (<p className='no-items'>Список завдань порожній. Додайте перше завдання!</p>)
     }
+
+    const handleComplete = (id: string) => {
+        dispatch(toggleTodo(id));
+    }
+
     return (
         <div className='task-list'>
             {todos.map((todo) => (
-                <div className='task-list__item' key={todo.id}>
-                    <div className='task-list__checkbox'>
-                        <button className="task-list__checkbox-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                 stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                <div className={`task-list__item ${todo.completed ? 'task-list__checkbox-completed' : ''}`} key={todo.id}>
+                    <div className='list__checkbox'>
+                        <button className="task-list__checkbox-button" onClick={() => handleComplete(todo.id)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 stroke={todo.completed ? "#00a86b" : "#888888"}
                                  aria-hidden="true">
                                 <circle cx="12" cy="12" r="10"></circle>
+                                {todo.completed && <path d="m9 12 2 2 4-4"></path>}
                             </svg>
                         </button>
                     </div>
                     <div className='task-list__details'>
                         <div className='task-list__title'>
-                            <span>{todo.text}</span>
+                            <span className={todo.completed ? "completed" : ""}>{todo.text}</span>
                         </div>
                         <div className='task-list__description'>
                             <span className='task-list__category'>{selectValues[todo.type]}</span>
@@ -35,8 +45,9 @@ function TaskList() {
                         <button
                             className="task-list__edit"
                             title="Редагувати">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                 stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                  aria-hidden="true">
                                 <path d="M12 20h9"></path>
                                 <path
@@ -46,8 +57,9 @@ function TaskList() {
                         <button
                             className="task-list__delete"
                             title="Видалити">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                 stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                  aria-hidden="true">
                                 <path d="M3 6h18"></path>
                                 <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>

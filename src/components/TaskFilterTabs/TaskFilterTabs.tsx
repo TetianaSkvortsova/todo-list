@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import './TaskFilterTabs.scss';
+import {useAppSelector} from "../../store/hooks.ts";
 
 function TaskFilterTabs() {
     const [activeFilter, setActiveFilter] = useState<'all' | 'active' | 'completed'>('all');
+    const todos = useAppSelector((state) => state.todos.items);
 
     return (
         <div className='task-filter-tabs'>
@@ -10,7 +12,7 @@ function TaskFilterTabs() {
                 type='button'
                 className={`task-filter-tabs__btn ${activeFilter === 'all' ? 'task-filter-tabs__btn--active' : ''}`}
                 onClick={() => setActiveFilter('all')}
-            >Всі(4)</button>
+            >Всі({todos.length})</button>
             <button
                 type='button'
                 className={`task-filter-tabs__btn ${activeFilter === 'active' ? 'task-filter-tabs__btn--active' : ''}`}

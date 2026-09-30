@@ -13,6 +13,12 @@
     margin-bottom: 1rem;
   }
 
+  &__item:hover {
+    border-color: #c7d2fe;
+    -webkit-box-shadow: 0px 6px 23px -2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 6px 23px -2px rgba(0, 0, 0, 0.15);
+  }
+
   &__checkbox, &__edit, &__delete, &__checkbox-button {
     border: none;
     background-color: #ffffff;
@@ -22,8 +28,17 @@
     align-self: center;
   }
 
+  &__checkbox-completed {
+    background-color: #f8fafc;
+  }
+
   &__title {
     font: 1.3rem "Inter", sans-serif;
+
+    .completed {
+      text-decoration: line-through;
+      color: #94a3b8;
+    }
   }
 
   &__description {
@@ -48,6 +63,20 @@
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+    visibility: hidden;
+    stroke: #94a3b8;
+  }
+
+  &__delete:hover {
+    stroke: #ff2121;
+  }
+
+  &__edit:hover {
+    stroke: #4f46e5;
+  }
+
+  &__item:hover &__actions {
+    visibility: visible;
   }
 
   &__details {

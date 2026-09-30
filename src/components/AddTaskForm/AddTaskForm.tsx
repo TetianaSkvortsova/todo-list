@@ -22,6 +22,7 @@ function AddTaskForm() {
             dispatch(addTodo({
                 text: newTask,
                 type: selectedValue,
+                completed: false,
             }));
 
             if (taskRef.current) {
