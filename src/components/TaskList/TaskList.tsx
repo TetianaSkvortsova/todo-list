@@ -7,9 +7,19 @@ import {toggleTodo} from "../../store/todoSlice.ts";
 function TaskList() {
     const dispatch = useAppDispatch();
     const todos = useAppSelector((state) => state.todos.items);
+    const filter = useAppSelector((state) => state.todos.filter);
+    const filteredTodos = todos.filter((todo) => {
+        if (filter === 'active') return !todo.completed;
+        if (filter === 'completed') return todo.completed;
+        return true; // для 'all' повертаємо всі
+    });
 
     if (todos.length === 0) {
         return (<p className='no-items'>Список завдань порожній. Додайте перше завдання!</p>)
+    }
+
+    if (filteredTodos.length === 0) {
+        return <p className='no-items'>Список завдань порожній.</p>;
     }
 
     const handleComplete = (id: string) => {
@@ -18,7 +28,7 @@ function TaskList() {
 
     return (
         <div className='task-list'>
-            {todos.map((todo) => (
+            {filteredTodos.map((todo) => (
                 <div className={`task-list__item ${todo.completed ? 'task-list__checkbox-completed' : ''}`} key={todo.id}>
                     <div className='list__checkbox'>
                         <button className="task-list__checkbox-button" onClick={() => handleComplete(todo.id)}>

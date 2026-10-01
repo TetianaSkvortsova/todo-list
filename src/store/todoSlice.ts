@@ -1,5 +1,7 @@
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 
+export type FilterType = 'all' | 'active' | 'completed';
+
 interface AddTodoPayload {
     text: string;
     type: string;
@@ -15,6 +17,7 @@ export interface Todo {
 
 interface TodoState {
     items: Todo[];
+    filter: FilterType;
 }
 
 const savedTodos = localStorage.getItem('todos');
@@ -23,6 +26,7 @@ const initialItems: Todo[] = savedTodos ? JSON.parse(savedTodos) : [];
 
 const initialState: TodoState = {
     items: initialItems,
+    filter: 'all',
 };
 
 const todoSlice = createSlice({
@@ -46,8 +50,11 @@ const todoSlice = createSlice({
                 todo.completed = !todo.completed;
             }
         },
+        setFilter: (state, action: PayloadAction<FilterType>) => {
+            state.filter = action.payload;
+        },
     },
 });
 
-export const {addTodo, toggleTodo} = todoSlice.actions;
+export const {addTodo, toggleTodo, setFilter} = todoSlice.actions;
 export default todoSlice.reducer;
