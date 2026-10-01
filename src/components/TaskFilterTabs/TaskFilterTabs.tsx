@@ -7,7 +7,6 @@ function TaskFilterTabs() {
     const dispatch = useAppDispatch();
     const [activeFilter, setActiveFilter] = useState<'all' | 'active' | 'completed'>('all');
     const todos = useAppSelector((state) => state.todos.items);
-    const currentFilter = useAppSelector((state) => state.todos.filter);
 
     const handleFilterChange = (filter: FilterType) => {
         setActiveFilter(filter);

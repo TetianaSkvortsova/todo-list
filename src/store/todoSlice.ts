@@ -18,6 +18,7 @@ export interface Todo {
 interface TodoState {
     items: Todo[];
     filter: FilterType;
+    editingTodoId: string | null;
 }
 
 const savedTodos = localStorage.getItem('todos');
@@ -27,6 +28,7 @@ const initialItems: Todo[] = savedTodos ? JSON.parse(savedTodos) : [];
 const initialState: TodoState = {
     items: initialItems,
     filter: 'all',
+    editingTodoId: null,
 };
 
 const todoSlice = createSlice({
@@ -39,6 +41,7 @@ const todoSlice = createSlice({
                 text: action.payload.text,
                 type: action.payload.type,
                 completed: action.payload.completed,
+                // editing: action.payload.editing,
             };
             state.items.push(newTodo);
         },
@@ -53,8 +56,24 @@ const todoSlice = createSlice({
         setFilter: (state, action: PayloadAction<FilterType>) => {
             state.filter = action.payload;
         },
+        startEditing: (state, action: PayloadAction<string>) => {
+            state.editingTodoId = action.payload;
+
+        },
+        cancelEditing: (state) => {
+            state.editingTodoId = null;
+        },
+        updateTodo: (state, action: PayloadAction<{ id: string; text: string; }>) => {
+            const todo = state.items.find((todo) => {
+                return todo.id === action.payload.id;
+            });
+            if (todo) {
+                todo.text = action.payload.text;
+                state.editingTodoId = null;
+            }
+        },
     },
 });
 
-export const {addTodo, toggleTodo, setFilter} = todoSlice.actions;
+export const {addTodo, toggleTodo, setFilter, startEditing, cancelEditing, updateTodo} = todoSlice.actions;
 export default todoSlice.reducer;

@@ -82,4 +82,47 @@
   &__details {
     flex-grow: 1;
   }
+
+  &__edit-mode {
+    width: 100%;
+    display: flex;
+  }
+
+  &__edit-input {
+    border: solid #a5b4fc 1px;
+    border-radius: 0.8rem;
+    flex-grow: 1;
+    font: 1.3rem "Inter", sans-serif;
+    padding: 0.9rem;
+  }
+
+  &__edit-input:focus {
+    border: solid #6366f1 2px;
+    opacity: 1;
+    outline: 2px solid transparent;
+  }
+
+  &__save-btn {
+    background-color: #d1fae5;
+    border: none;
+    border-radius: 0.7rem;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+  }
+
+  &__save-btn:hover {
+    background-color: #a7f3d0;
+  }
+
+  &__cancel-btn {
+    background-color: #ffe4e6;
+    border: none;
+    border-radius: 0.7rem;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+  }
+
+  &__cancel-btn:hover {
+    background-color: #fecdd3;
+  }
 }
