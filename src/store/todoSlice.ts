@@ -41,7 +41,6 @@ const todoSlice = createSlice({
                 text: action.payload.text,
                 type: action.payload.type,
                 completed: action.payload.completed,
-                // editing: action.payload.editing,
             };
             state.items.push(newTodo);
         },
@@ -72,8 +71,11 @@ const todoSlice = createSlice({
                 state.editingTodoId = null;
             }
         },
+        deleteTodo: (state, action: PayloadAction<string>) => {
+            state.items.splice(state.items.findIndex((item) => item.id === action.payload), 1);
+        }
     },
 });
 
-export const {addTodo, toggleTodo, setFilter, startEditing, cancelEditing, updateTodo} = todoSlice.actions;
+export const {addTodo, toggleTodo, setFilter, startEditing, cancelEditing, updateTodo, deleteTodo} = todoSlice.actions;
 export default todoSlice.reducer;

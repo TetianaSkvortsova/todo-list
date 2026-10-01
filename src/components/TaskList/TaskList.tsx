@@ -1,7 +1,7 @@
 import './TaskList.scss';
 import {useAppDispatch, useAppSelector} from "../../store/hooks.ts";
 import {selectValues} from "../AddTaskForm/AddTaskForm.tsx";
-import {cancelEditing, startEditing, toggleTodo, updateTodo} from "../../store/todoSlice.ts";
+import {cancelEditing, deleteTodo, startEditing, toggleTodo, updateTodo} from "../../store/todoSlice.ts";
 import {useRef} from "react";
 
 function TaskList() {
@@ -42,6 +42,10 @@ function TaskList() {
         if (editedText && editedText.trim()) {
             dispatch(updateTodo({id, text: editedText}));
         }
+    }
+
+    const handleDelete = (id: string) => {
+        dispatch(deleteTodo(id));
     }
 
     return (
@@ -121,7 +125,9 @@ function TaskList() {
                                 </button>
                                 <button
                                     className="task-list__delete"
-                                    title="Видалити">
+                                    title="Видалити"
+                                    onClick={() => handleDelete(todo.id)}
+                                >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                          fill="none"
                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -135,11 +141,9 @@ function TaskList() {
                                 </button>
                             </div>
                         </>
-
                     )}
                 </div>
             ))}
-
         </div>
     );
 }

@@ -11,7 +11,6 @@ export const selectValues = {
 }
 
 function AddTaskForm() {
-
     const dispatch = useAppDispatch();
     const taskRef = useRef<HTMLInputElement>(null);
     const selectRef = useRef<HTMLSelectElement>(null);
