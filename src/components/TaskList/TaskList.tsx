@@ -39,7 +39,7 @@ function TaskList() {
         dispatch(toggleTodo(id));
     }
 
-     const handleSave = (id: string) => {
+    const handleSave = (id: string) => {
         const editedText = saveRef.current?.value;
         if (editedText && editedText.trim()) {
             dispatch(updateTodo({id, text: editedText}));
@@ -68,9 +68,10 @@ function TaskList() {
                                 className="task-list__save-btn"
                                 onClick={() => handleSave(todo.id)}
                                 title="Зберегти">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" className="lucide lucide-check w-4 h-4" aria-hidden="true">
+                                <svg className="task-list__save-btn-icon"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     viewBox="0 0 24 24"
+                                     aria-hidden="true">
                                     <path d="M20 6 9 17l-5-5"></path>
                                 </svg>
                             </button>
@@ -79,9 +80,10 @@ function TaskList() {
                                 title="Скасувати"
                                 onClick={handleCancel}
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="#be123c" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" className="lucide lucide-x w-4 h-4" aria-hidden="true">
+                                <svg className="task-list__cancel-btn-icon"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     viewBox="0 0 24 24"
+                                     aria-hidden="true">
                                     <path d="M18 6 6 18"></path>
                                     <path d="m6 6 12 12"></path>
                                 </svg>
@@ -91,9 +93,9 @@ function TaskList() {
                         <>
                             <div className='list__checkbox'>
                                 <button className="task-list__checkbox-button" onClick={() => handleComplete(todo.id)}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    <svg className='task-list__checkbox-icon'
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24"
                                          stroke={todo.completed ? "#00a86b" : "#888888"}
                                          aria-hidden="true">
                                         <circle cx="12" cy="12" r="10"></circle>
@@ -116,9 +118,9 @@ function TaskList() {
                                     title="Редагувати"
                                     onClick={() => handleEditing(todo.id)}
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    <svg className="task-list__edit-icon"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24"
                                          aria-hidden="true">
                                         <path d="M12 20h9"></path>
                                         <path
@@ -130,9 +132,9 @@ function TaskList() {
                                     title="Видалити"
                                     onClick={() => handleDelete(todo.id)}
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    <svg className="task-list__delete-icon"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24"
                                          aria-hidden="true">
                                         <path d="M3 6h18"></path>
                                         <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>

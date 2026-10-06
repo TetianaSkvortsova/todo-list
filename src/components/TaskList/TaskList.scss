@@ -1,3 +1,12 @@
+@mixin icon {
+  height: 24px;
+  width: 24px;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .task-list {
   margin-top: 2rem;
   align-items: center;
@@ -124,5 +133,19 @@
 
   &__cancel-btn:hover {
     background-color: #fecdd3;
+  }
+
+  &__save-btn-icon {
+    @include icon;
+    stroke: #047857;
+  }
+
+  &__cancel-btn-icon {
+    @include icon;
+    stroke: #be123c;
+  }
+
+  &__checkbox-icon, &__edit-icon, &__delete-icon {
+    @include icon;
   }
 }

@@ -13,11 +13,16 @@ function Header() {
                 <div className='app-header__main'>
                     <div className='app-header__brand'>
                         <span className='app-header__badge-logo'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" aria-hidden="true"><rect
-                                x="3" y="5" width="6" height="6" rx="1"></rect><path d="m3 17 2 2 4-4"></path><path
-                                d="M13 6h8"></path><path d="M13 12h8"></path><path d="M13 18h8"></path>
+                            <svg className='app-header__logo-icon'
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 stroke="currentColor"
+                                 aria-hidden="true">
+                                <rect x="3" y="5" width="6" height="6" rx="1"></rect>
+                                <path d="m3 17 2 2 4-4"></path>
+                                <path d="M13 6h8"></path>
+                                <path d="M13 12h8"></path>
+                                <path d="M13 18h8"></path>
                                 </svg>
                         </span>
                         <span className='app-header__name'>Мій планувальник</span>

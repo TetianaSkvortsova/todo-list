@@ -24,8 +24,20 @@
     color: #bebebe;
   }
 
-  svg {
+  &__search-icon {
     margin-top: 0.5rem;
     margin-left: 0.5rem;
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #94a3b8;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s ease;
+
+    &:hover {
+      stroke: #0284c7;
+    }
   }
 }

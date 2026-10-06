@@ -14,6 +14,7 @@ function AddTaskForm() {
     const dispatch = useAppDispatch();
     const taskRef = useRef<HTMLInputElement>(null);
     const selectRef = useRef<HTMLSelectElement>(null);
+
     const handleAddTask = () => {
         const newTask = taskRef.current?.value;
         const selectedValue = selectRef.current?.value || 'private';
