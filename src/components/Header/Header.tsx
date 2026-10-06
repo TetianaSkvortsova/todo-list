@@ -1,7 +1,16 @@
 import React from 'react';
 import './Header.scss';
+import {useAppSelector} from "../../store/hooks.ts";
 
 function Header() {
+    const todos = useAppSelector((state) => state.todos.items);
+    const completedCount = todos.filter((todo) => todo.completed).length;
+    const progress = (completedCount / todos.length) * 100;
+
+    console.log('completedCount: ', completedCount);
+    console.log('todos: ', todos.length);
+    console.log('progress: ', progress);
+
     return (
         <header className='app-header'>
             <div className='app-header__wrapper'>
@@ -21,12 +30,12 @@ function Header() {
                     <p className='app-header__subtitle'>Організовуй свої ідеї та щоденні таски</p>
                 </div>
                 <div className='app-header__progress'>
-                    <h1>33%</h1>
+                    <h1>{progress}%</h1>
                     <p className='app-header__text'>прогрес</p>
                 </div>
             </div>
             <div className='app-header__progress-bar'>
-                <div className='app-header__progress-bar-fill' style={{ width: `${33}%` }}></div>
+                <div className='app-header__progress-bar-fill' style={{width: `${progress}%`}}></div>
             </div>
         </header>
     );
