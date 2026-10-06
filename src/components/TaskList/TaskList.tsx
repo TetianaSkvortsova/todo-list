@@ -1,7 +1,14 @@
 import './TaskList.scss';
 import {useAppDispatch, useAppSelector} from "../../store/hooks.ts";
 import {selectValues} from "../AddTaskForm/AddTaskForm.tsx";
-import {cancelEditing, deleteTodo, startEditing, toggleTodo, updateTodo} from "../../store/todoSlice.ts";
+import {
+    cancelEditing,
+    deleteTodo,
+    selectFilteredTodos,
+    startEditing,
+    toggleTodo,
+    updateTodo
+} from "../../store/todoSlice.ts";
 import {useRef} from "react";
 
 function TaskList() {
@@ -9,13 +16,8 @@ function TaskList() {
     const saveRef = useRef<HTMLInputElement>(null);
 
     const todos = useAppSelector((state) => state.todos.items);
-    const filter = useAppSelector((state) => state.todos.filter);
     const editingTodoId = useAppSelector((state) => state.todos.editingTodoId);
-    const filteredTodos = todos.filter((todo) => {
-        if (filter === 'active') return !todo.completed;
-        if (filter === 'completed') return todo.completed;
-        return true;
-    });
+    const filteredTodos = useAppSelector(selectFilteredTodos);
 
     if (todos.length === 0) {
         return (<p className='no-items'>Список завдань порожній. Додайте перше завдання!</p>)

@@ -1,4 +1,5 @@
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
+import type {RootState} from "./index.ts";
 
 export type FilterType = 'all' | 'active' | 'completed';
 
@@ -19,6 +20,7 @@ interface TodoState {
     items: Todo[];
     filter: FilterType;
     editingTodoId: string | null;
+    searchQuery: string;
 }
 
 const savedTodos = localStorage.getItem('todos');
@@ -29,7 +31,25 @@ const initialState: TodoState = {
     items: initialItems,
     filter: 'all',
     editingTodoId: null,
+    searchQuery: '',
 };
+
+export const selectFilteredTodos = (state: RootState) => {
+    const {items, filter, searchQuery} = state.todos;
+
+    return items.filter((todo) => {
+        const matchesFilter =
+            filter === 'all' ||
+            (filter === 'active' && !todo.completed) ||
+            (filter === 'completed' && todo.completed);
+
+        const matchesSearch = todo.text
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase().trim());
+
+        return matchesFilter && matchesSearch;
+    })
+}
 
 const todoSlice = createSlice({
     name: 'todos',
@@ -73,9 +93,21 @@ const todoSlice = createSlice({
         },
         deleteTodo: (state, action: PayloadAction<string>) => {
             state.items.splice(state.items.findIndex((item) => item.id === action.payload), 1);
-        }
+        },
+        setSearchQuery: (state, action: PayloadAction<string>) => {
+            state.searchQuery = action.payload;
+        },
     },
 });
 
-export const {addTodo, toggleTodo, setFilter, startEditing, cancelEditing, updateTodo, deleteTodo} = todoSlice.actions;
+export const {
+    addTodo,
+    toggleTodo,
+    setFilter,
+    startEditing,
+    cancelEditing,
+    updateTodo,
+    deleteTodo,
+    setSearchQuery,
+} = todoSlice.actions;
 export default todoSlice.reducer;

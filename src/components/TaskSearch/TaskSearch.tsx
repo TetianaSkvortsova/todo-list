@@ -1,7 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './TaskSearch.scss';
+import {useAppDispatch, useAppSelector} from "../../store/hooks.ts";
+import {setSearchQuery} from "../../store/todoSlice.ts";
 
 function TaskSearch() {
+    const dispatch = useAppDispatch();
+    const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            dispatch(setSearchQuery(searchTerm));
+        }, 400);
+
+        return () => clearTimeout(handler);
+    }, [searchTerm, dispatch]);
+
     return (
         <search className='task-search'>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -14,6 +27,8 @@ function TaskSearch() {
                 type="search"
                 className="task-search__input"
                 placeholder="Пошук..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
             />
         </search>
     );
