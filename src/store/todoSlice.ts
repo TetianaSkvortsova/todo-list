@@ -6,6 +6,7 @@ export type FilterType = 'all' | 'active' | 'completed';
 interface AddTodoPayload {
     text: string;
     type: string;
+    createdAt: string;
     completed: boolean;
 }
 
@@ -13,6 +14,7 @@ export interface Todo {
     id: string;
     text: string;
     type: string;
+    createdAt: string;
     completed: boolean;
 }
 
@@ -60,6 +62,7 @@ const todoSlice = createSlice({
                 id: Date.now().toString(),
                 text: action.payload.text,
                 type: action.payload.type,
+                createdAt: action.payload.createdAt,
                 completed: action.payload.completed,
             };
             state.items.push(newTodo);

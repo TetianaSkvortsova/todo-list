@@ -109,7 +109,7 @@ function TaskList() {
                                 </div>
                                 <div className='task-list__description'>
                                     <span className='task-list__category'>{selectValues[todo.type]}</span>
-                                    <span className='task-list__date'>Today</span>
+                                    <span className='task-list__date'>{todo.createdAt}</span>
                                 </div>
                             </div>
                             <div className='task-list__actions'>
