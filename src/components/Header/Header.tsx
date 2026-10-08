@@ -5,7 +5,7 @@ import {useAppSelector} from "../../store/hooks.ts";
 function Header() {
     const todos = useAppSelector((state) => state.todos.items);
     const completedCount = todos.filter((todo) => todo.completed).length;
-    const progress: number = (completedCount / todos.length) * 100;
+    const progress: number = (completedCount / todos.length) * 100 || 0;
 
     return (
         <header className='app-header'>
